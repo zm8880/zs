@@ -1,398 +1,988 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九蒸九晒黄精 | 千年药食同源养生科普</title>
-    <link rel="stylesheet" href="/zs/style.css">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>白土岗镇 · 自家种植</title>
+    <style>
+        /* ===== 全局重置 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #f9f7f4;
+            color: #2d2a24;
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* ===== 滚动渐显 ===== */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== 顶部 Hero ===== */
+        .hero {
+            background: linear-gradient(145deg, #3a5e3a, #1f3a1f);
+            color: #fff;
+            padding: 40px 24px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "🌾";
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            font-size: 120px;
+            opacity: 0.12;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd966;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 215, 0, 0.25);
+        }
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .hero h1 span {
+            color: #ffd966;
+        }
+        .hero .sub {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+        .hero .origin {
+            font-size: 15px;
+            opacity: 0.75;
+            background: rgba(0, 0, 0, 0.25);
+            display: inline-block;
+            padding: 4px 20px;
+            border-radius: 40px;
+            margin-top: 6px;
+        }
+        .hero .price-tag {
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 8px 32px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .hero .price-tag small {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        .hero .cta-btn {
+            display: inline-block;
+            margin-top: 24px;
+            background: #ffd966;
+            color: #1f3a1f;
+            padding: 14px 44px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero .cta-btn:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== 容器 ===== */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== 图片展示区（横向滑动） ===== */
+        .gallery {
+            padding: 30px 0 10px;
+        }
+        .gallery h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 16px;
+        }
+        .gallery h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .gallery-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding: 8px 4px 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .gallery-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: #c0d2b8;
+            border-radius: 8px;
+        }
+        .gallery-scroll .item {
+            flex: 0 0 72%;
+            scroll-snap-align: center;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+        }
+        .gallery-scroll .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: #e8e3dc;
+        }
+        .gallery-scroll .item .caption {
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #2d2a24;
+            text-align: center;
+        }
+
+        /* ===== 卖点网格 ===== */
+        .features {
+            padding: 10px 0 10px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 20px;
+        }
+        .features h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .feature-item {
+            background: #fff;
+            padding: 20px 12px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s;
+        }
+        .feature-item:active {
+            transform: scale(0.97);
+        }
+        .feature-item .icon {
+            font-size: 36px;
+            margin-bottom: 6px;
+        }
+        .feature-item h4 {
+            font-size: 16px;
+            color: #2b4a2b;
+            margin-bottom: 2px;
+        }
+        .feature-item p {
+            font-size: 13px;
+            color: #6b6560;
+        }
+
+        /* ===== 详细介绍 ===== */
+        .story {
+            background: #fff;
+            padding: 32px 0;
+            border-radius: 32px 32px 0 0;
+            margin-top: 16px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .story h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 16px;
+        }
+        .story h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .story p {
+            font-size: 16px;
+            color: #3d3a34;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+        .story .highlight-box {
+            background: #f3f7ee;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border-left: 5px solid #ffd966;
+            margin: 18px 0;
+        }
+        .story .highlight-box strong {
+            color: #2b4a2b;
+        }
+
+        /* ===== 怎么吃 ===== */
+        .how-to-eat {
+            padding: 30px 0 10px;
+        }
+        .how-to-eat h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 16px;
+        }
+        .how-to-eat h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .eat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+        .eat-item {
+            background: #fff;
+            border-radius: 20px;
+            padding: 18px 12px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .eat-item .icon {
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+        .eat-item h4 {
+            font-size: 15px;
+            color: #2b4a2b;
+        }
+        .eat-item p {
+            font-size: 13px;
+            color: #6b6560;
+            margin-top: 2px;
+        }
+
+        /* ===== 怎么种植 ===== */
+        .how-to-grow {
+            background: #fff;
+            padding: 32px 0;
+            border-radius: 32px;
+            margin: 16px 0 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .how-to-grow h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 16px;
+        }
+        .how-to-grow h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .grow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .grow-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f6f9f3;
+            padding: 14px 18px;
+            border-radius: 18px;
+        }
+        .grow-step .num {
+            flex: 0 0 36px;
+            height: 36px;
+            background: #2b4a2b;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .grow-step .content h4 {
+            font-size: 16px;
+            color: #2b4a2b;
+        }
+        .grow-step .content p {
+            font-size: 14px;
+            color: #5a544d;
+        }
+
+        /* ===== 评价轮播 ===== */
+        .reviews {
+            padding: 30px 0 10px;
+        }
+        .reviews h2 {
+            text-align: center;
+            font-size: 24px;
+            color: #2b4a2b;
+            margin-bottom: 20px;
+        }
+        .reviews h2::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 4px;
+            background: #ffd966;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+        .review-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 24px 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            display: none;
+        }
+        .review-card.active {
+            display: block;
+        }
+        .review-card .stars {
+            color: #f5b342;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .review-card .text {
+            font-size: 16px;
+            color: #2d2a24;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .review-card .author {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2b4a2b;
+        }
+        .review-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .review-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4cfc8;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .review-dots span.active {
+            background: #2b4a2b;
+            transform: scale(1.25);
+        }
+
+        /* ===== 倒计时 ===== */
+        .countdown-section {
+            background: linear-gradient(145deg, #2b4a2b, #1f361f);
+            color: #fff;
+            padding: 28px 20px;
+            border-radius: 28px;
+            margin: 24px 0 10px;
+            text-align: center;
+        }
+        .countdown-section h3 {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        .countdown-section .timer {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .countdown-section .timer span {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 16px;
+            border-radius: 14px;
+            min-width: 60px;
+        }
+        .countdown-section .timer .label {
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.6;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* ===== 联系卡片 ===== */
+        .contact {
+            background: #fff;
+            border-radius: 28px;
+            padding: 24px 20px;
+            margin: 24px 0 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        }
+        .contact h3 {
+            text-align: center;
+            font-size: 20px;
+            color: #2b4a2b;
+            margin-bottom: 16px;
+        }
+        .contact .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0ede8;
+        }
+        .contact .row:last-child {
+            border-bottom: none;
+        }
+        .contact .row .label {
+            font-weight: 600;
+            color: #3d3a34;
+        }
+        .contact .row .value {
+            color: #2b4a2b;
+            font-weight: 500;
+        }
+        .contact .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .contact .btn-group a {
+            flex: 1;
+            text-align: center;
+            padding: 14px 0;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 17px;
+            transition: transform 0.15s;
+        }
+        .contact .btn-group a:active {
+            transform: scale(0.96);
+        }
+        .btn-phone {
+            background: #2b4a2b;
+            color: #fff;
+        }
+        .btn-wechat {
+            background: #e8f0e3;
+            color: #2b4a2b;
+            border: 1px solid #c0d2b8;
+        }
+
+        /* ===== 底部悬浮栏 ===== */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            z-index: 999;
+        }
+        .bottom-bar .price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2b4a2b;
+            white-space: nowrap;
+        }
+        .bottom-bar .price small {
+            font-size: 14px;
+            font-weight: 400;
+            color: #6b6560;
+        }
+        .bottom-bar .actions {
+            display: flex;
+            flex: 1;
+            gap: 10px;
+        }
+        .bottom-bar .actions a {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: transform 0.15s;
+        }
+        .bottom-bar .actions a:active {
+            transform: scale(0.95);
+        }
+        .bottom-bar .actions .btn-buy {
+            background: #ffd966;
+            color: #1f361f;
+        }
+        .bottom-bar .actions .btn-chat {
+            background: #eef3ea;
+            color: #2b4a2b;
+            border: 1px solid #d0dcc8;
+        }
+
+        /* ===== 辅助 ===== */
+        .tag {
+            display: inline-block;
+            background: #f0ede8;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-size: 13px;
+            color: #5a544d;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <!-- 全局加载动画 -->
-    <div class="loading-box">
-        <div class="load-leaf"><i class="fa-solid fa-seedling"></i></div>
-        <p>正在加载古法黄精养生馆...</p>
-    </div>
 
-    <!-- 顶部公告条 -->
-    <div class="top-notice">
-        <div class="container notice-wrap">
-            <i class="fa-solid fa-leaf"></i>温馨提示：黄精性平滋补，坚持少量长期食用效果更佳
+    <!-- ==================== HERO ==================== -->
+    <header class="hero">
+        <div class="hero-badge">🌱 自家种植 · 产地直发</div>
+        <h1>白土岗<span>·</span>农臻</h1>
+        <div class="sub">从田间到餐桌，只差一个订单</div>
+        <div class="origin">📍 河南 · 南召 · 白土岗镇</div>
+        <div class="price-tag">
+            ¥ 26.8 <small>/ 斤</small>
         </div>
-    </div>
-
-    <!-- 导航栏 -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-seedling"></i> 古法九制黄精
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="#intro" class="nav-link">黄精溯源</a></li>
-                <li class="nav-item"><a href="#effect" class="nav-link">四大养生功效</a></li>
-                <li class="nav-item"><a href="#craft" class="nav-link">九蒸九晒工艺</a></li>
-                <li class="nav-item"><a href="#match" class="nav-link">配伍搭配</a></li>
-                <li class="nav-item"><a href="#food" class="nav-link">养生食谱</a></li>
-                <li class="nav-item"><a href="#crowd" class="nav-link">食用人群指南</a></li>
-                <li class="nav-item"><a href="#review" class="nav-link">用户真实口碑</a></li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
+        <br />
+        <a href="#contact" class="cta-btn">📞 立即咨询</a>
     </header>
 
-    <!-- 首屏Banner -->
-    <section id="home" class="banner scroll-animate">
-        <div class="banner-overlay"></div>
-        <div class="banner-content">
-            <span class="banner-tag">药食同源 · 仙家余粮</span>
-            <h1>深山古法九蒸九晒黄精</h1>
-            <p class="sub-title">历经九蒸九曝，去麻润养，补气养阴，四季温和调理身心</p>
-            <div class="banner-buttons">
-                <a href="#intro" class="btn primary-btn scroll-btn">深入了解黄精</a>
-                <a href="#food" class="btn outline-btn scroll-btn">查看养生吃法</a>
-            </div>
-        </div>
-        <div class="scroll-tip">
-            <i class="fa-solid fa-angle-down"></i>
-        </div>
-    </section>
+    <main class="container">
 
-    <!-- 品牌数据统计 -->
-    <section class="data-wrap scroll-animate">
-        <div class="container data-container">
-            <div class="data-item">
-                <div class="data-num" data-num="1200">0</div>
-                <div class="data-text">古法传承年份</div>
-            </div>
-            <div class="data-item">
-                <div class="data-num" data-num="9">0</div>
-                <div class="data-text">完整蒸晒工序</div>
-            </div>
-            <div class="data-item">
-                <div class="data-num" data-num="36800">0</div>
-                <div class="data-text">养生爱好者选用</div>
-            </div>
-            <div class="data-item">
-                <div class="data-num" data-num="100">0</div>
-                <div class="data-text">无硫无添加占比%</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 黄精溯源介绍 -->
-    <section id="intro" class="section scroll-animate">
-        <div class="container">
-            <div class="section-title">
-                <h2>黄精溯源 · 千年仙人余粮</h2>
-                <div class="line-decor"></div>
-                <p>《本草纲目》《神农本草经》记载传统滋补上品</p>
-            </div>
-            <div class="intro-wrap">
-                <div class="intro-img">
-                    <div class="img-box"></div>
-                    <div class="img-label">深山原生三年生黄精根茎</div>
+        <!-- ==================== 图片展示（横向滑动） ==================== -->
+        <section class="gallery fade-section">
+            <h2>📸 实拍 · 田间到果实</h2>
+            <div class="gallery-scroll">
+                <div class="item">
+                    <img src="https://picsum.photos/seed/field/600/400" alt="白土岗田地" />
+                    <div class="caption">🌾 白土岗 · 自家田地</div>
                 </div>
-                <div class="intro-text">
-                    <h3>何为九制黄精？</h3>
-                    <p>黄精为百合科多花黄精干燥根茎，古代修道之人常采挖充饥滋养，得名“仙人饭”。生黄精含有刺激性物质，直接食用会咽喉发麻，不可生食。</p>
-                    <p>传统九蒸九晒是顶级炮制工艺，柴火木甑蒸透、日光自然晾晒循环九次，彻底去除麻涩，药性由微凉转为平和，黄精多糖大量析出，软糯甘甜，滋养功效翻倍。</p>
-                    <p>选材全部取自海拔800米以上深山，人工采挖山泉清洗，全程不熏硫磺、无蔗糖、无防腐剂，最大保留草本原生营养。</p>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-leaf"></i>深山原生自然生长</li>
-                        <li><i class="fa-solid fa-fire-flame-curved"></i>木甑古法九蒸九晒</li>
-                        <li><i class="fa-solid fa-shield-halved"></i>零硫磺零化学添加</li>
-                        <li><i class="fa-solid fa-mug-hot"></i>即食、泡水、煲汤皆宜</li>
-                    </ul>
+                <div class="item">
+                    <img src="https://picsum.photos/seed/harvest/600/400" alt="成熟果实" />
+                    <div class="caption">🍎 自然成熟 · 饱满多汁</div>
+                </div>
+                <div class="item">
+                    <img src="https://picsum.photos/seed/fresh/600/400" alt="现摘现发" />
+                    <div class="caption">📦 现摘现发 · 新鲜直达</div>
+                </div>
+                <div class="item">
+                    <img src="https://picsum.photos/seed/taste/600/400" alt="诱人果肉" />
+                    <div class="caption">😋 果肉细腻 · 甘甜回味</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 四大养生功效 -->
-    <section id="effect" class="section bg-green scroll-animate">
-        <div class="container">
-            <div class="section-title white-title">
-                <h2>黄精四大核心养生功效</h2>
-                <div class="line-decor white-line"></div>
-                <p>药性平和不燥烈，男女老少四季均可温和滋补</p>
+        <!-- ==================== 卖点 ==================== -->
+        <section class="features fade-section">
+            <h2>为什么选我们</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="icon">🌾</div>
+                    <h4>自家种植</h4>
+                    <p>白土岗镇自有田地，三代农耕</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💧</div>
+                    <h4>天然山泉</h4>
+                    <p>灌溉水源来自伏牛山余脉</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🚜</div>
+                    <h4>现摘现发</h4>
+                    <p>下单后清晨采摘，当天发出</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">💰</div>
+                    <h4>物美价廉</h4>
+                    <p>去掉中间商，实惠直供</p>
+                </div>
             </div>
-            <div class="effect-grid">
-                <div class="effect-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-lungs"></i>
+        </section>
+
+        <!-- ==================== 详细介绍 ==================== -->
+        <section class="story fade-section">
+            <div class="container" style="padding:0 20px;">
+                <h2>🌿 白土岗的故事</h2>
+                <p>
+                    我家住在<strong>白土岗镇</strong>，祖辈都以种地为生。这里的土壤富含矿物质，昼夜温差大，种出来的粮食和瓜果
+                    <strong>口感特别醇厚</strong>。
+                </p>
+                <div class="highlight-box">
+                    <strong>🌱 自家种植 · 无中间商</strong><br />
+                    从播种到收获，每一颗果实都是我们亲手打理。没有批发商加价，也没有冷库囤积，
+                    你吃到嘴里的，就是 <strong>最新鲜的家乡味道</strong>。
+                </div>
+                <p>
+                    我们坚持 <strong>自然成熟</strong>，不催熟、不打蜡。虽然个头可能没有超市里那么"完美"，
+                    但吃过的人都说——<strong>"这才是小时候的味道"</strong>。
+                </p>
+                <p style="margin-top:10px;text-align:center;">
+                    <span class="tag">👍 好评率 98%</span>
+                    <span class="tag" style="margin-left:8px;">⭐ 回头客超多</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== 怎么吃 ==================== -->
+        <section class="how-to-eat fade-section">
+            <h2>🍽️ 怎么吃</h2>
+            <div class="eat-grid">
+                <div class="eat-item">
+                    <div class="icon">🍎</div>
+                    <h4>直接鲜食</h4>
+                    <p>清水洗净，连皮吃，原汁原味</p>
+                </div>
+                <div class="eat-item">
+                    <div class="icon">🥗</div>
+                    <h4>水果沙拉</h4>
+                    <p>切块搭配酸奶或沙拉酱，清爽解腻</p>
+                </div>
+                <div class="eat-item">
+                    <div class="icon">🧃</div>
+                    <h4>鲜榨果汁</h4>
+                    <p>去皮榨汁，加少许蜂蜜，营养满分</p>
+                </div>
+                <div class="eat-item">
+                    <div class="icon">🥧</div>
+                    <h4>烘焙甜品</h4>
+                    <p>做果酱、派馅或蛋糕装饰，增香添色</p>
+                </div>
+                <div class="eat-item">
+                    <div class="icon">🍵</div>
+                    <h4>水果茶</h4>
+                    <p>切片晒干，搭配红茶或花茶冲泡</p>
+                </div>
+                <div class="eat-item">
+                    <div class="icon">🧊</div>
+                    <h4>冰镇享用</h4>
+                    <p>冷藏后口感更脆甜，夏日消暑神器</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 怎么种植 ==================== -->
+        <section class="how-to-grow fade-section">
+            <div class="container" style="padding:0 20px;">
+                <h2>🌱 怎么种植 · 我们的坚持</h2>
+                <div class="grow-steps">
+                    <div class="grow-step">
+                        <div class="num">1</div>
+                        <div class="content">
+                            <h4>深翻土地 · 施有机肥</h4>
+                            <p>每年入冬前深翻晾垡，施入腐熟农家肥，让土壤更肥沃。</p>
+                        </div>
                     </div>
-                    <h4>润肺生津</h4>
-                    <p>改善长期吸烟、教师主播用嗓过多、秋冬干燥干咳、咽喉干痒不适</p>
-                </div>
-                <div class="effect-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-stomach"></i>
+                    <div class="grow-step">
+                        <div class="num">2</div>
+                        <div class="content">
+                            <h4>自然育苗 · 移栽定植</h4>
+                            <p>使用传统育苗方式，待苗壮后移栽至大田，株行距合理。</p>
+                        </div>
                     </div>
-                    <h4>健脾养胃</h4>
-                    <p>调理脾胃虚弱、食欲不振、饭后腹胀、身形消瘦、消化差</p>
-                </div>
-                <div class="effect-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-bolt-lightning"></i>
+                    <div class="grow-step">
+                        <div class="num">3</div>
+                        <div class="content">
+                            <h4>山泉灌溉 · 人工除草</h4>
+                            <p>引伏牛山泉水灌溉，不使用除草剂，全部人工拔草。</p>
+                        </div>
                     </div>
-                    <h4>补气养阴</h4>
-                    <p>缓解长期熬夜、气血亏虚、精神萎靡、四肢乏力、容易疲惫</p>
-                </div>
-                <div class="effect-card">
-                    <div class="card-icon">
-                        <i class="fa-solid fa-seedling"></i>
+                    <div class="grow-step">
+                        <div class="num">4</div>
+                        <div class="content">
+                            <h4>物理防虫 · 自然成熟</h4>
+                            <p>采用杀虫灯、黄板等物理方式防虫，绝不催熟，足期生长。</p>
+                        </div>
                     </div>
-                    <h4>益肾固本</h4>
-                    <p>滋养肾精，改善中老年腰膝酸软、失眠多梦、体虚早衰</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 九蒸九晒完整工艺 -->
-    <section id="craft" class="section scroll-animate">
-        <div class="container">
-            <div class="section-title">
-                <h2>古法九蒸九晒完整工序</h2>
-                <div class="line-decor"></div>
-                <p>纯手工操作，全程三十余天慢制而成</p>
-            </div>
-            <div class="craft-step">
-                <div class="step-item">
-                    <span class="step-num">01</span>
-                    <h5>深山采挖</h5>
-                    <p>秋冬采收三年以上成熟黄精根茎</p>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">02</span>
-                    <h5>山泉清洗</h5>
-                    <p>反复冲刷泥土杂质，自然沥干水分</p>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">03</span>
-                    <h5>首次木蒸</h5>
-                    <p>柴火木甑隔水蒸至根茎通透柔软</p>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">04</span>
-                    <h5>露天日晒</h5>
-                    <p>日光自然风干，吸纳天地阳气</p>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">05</span>
-                    <h5>九次循环</h5>
-                    <p>重复蒸、晒九遍，直至乌黑油润软糯</p>
-                </div>
-                <div class="step-item">
-                    <span class="step-num">06</span>
-                    <h5>人工筛选封装</h5>
-                    <p>剔除残次品，真空锁鲜保存营养</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 新增：黄精经典配伍搭配 -->
-    <section id="match" class="section bg-light scroll-animate">
-        <div class="container">
-            <div class="section-title">
-                <h2>黄精经典养生配伍</h2>
-                <div class="line-decor"></div>
-                <p>搭配不同食材，针对性调理身体</p>
-            </div>
-            <div class="match-grid">
-                <div class="match-card">
-                    <h4>黄精+枸杞</h4>
-                    <p>补气明目，改善熬夜眼干、精神疲惫，上班族日常泡水首选</p>
-                </div>
-                <div class="match-card">
-                    <h4>黄精+红枣山药</h4>
-                    <p>健脾补血，体虚消瘦、气血不足人群煲汤搭配</p>
-                </div>
-                <div class="match-card">
-                    <h4>黄精+麦冬玉竹</h4>
-                    <p>强力润肺，常年干咳、抽烟人群秋冬调理</p>
-                </div>
-                <div class="match-card">
-                    <h4>黄精+桂圆</h4>
-                    <p>安神固本，改善失眠多梦、体虚乏力中老年适用</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 四种养生食谱 -->
-    <section id="food" class="section scroll-animate">
-        <div class="container">
-            <div class="section-title">
-                <h2>四种家常黄精养生食谱</h2>
-                <div class="line-decor"></div>
-                <p>做法简单，居家轻松养生</p>
-            </div>
-            <div class="food-grid">
-                <div class="food-card">
-                    <div class="food-icon"><i class="fa-solid fa-mug-hot"></i></div>
-                    <h4>黄精枸杞代茶饮</h4>
-                    <p>黄精2片+枸杞少许，沸水冲泡反复续水，熬夜人群每日饮用。</p>
-                </div>
-                <div class="food-card">
-                    <div class="food-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
-                    <h4>黄精老母鸡汤</h4>
-                    <p>鸡肉、黄精、红枣、山药慢炖1.5h，产后术后体虚滋补。</p>
-                </div>
-                <div class="food-card">
-                    <div class="food-icon"><i class="fa-solid fa-apple-whole"></i></div>
-                    <h4>直接嚼食</h4>
-                    <p>每日2-3片即食黄精，软糯香甜，办公室随时补充精力。</p>
-                </div>
-                <div class="food-card">
-                    <div class="food-icon"><i class="fa-solid fa-wine-bottle"></i></div>
-                    <h4>黄精养生泡酒</h4>
-                    <p>搭配枸杞桂圆纯粮酒浸泡，中老年固本滋养（少量饮用）。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 食用人群区分指南 -->
-    <section id="crowd" class="section bg-light scroll-animate">
-        <div class="container">
-            <div class="section-title">
-                <h2>食用人群区分指南</h2>
-                <div class="line-decor"></div>
-            </div>
-            <div class="crowd-wrap">
-                <div class="crowd-left">
-                    <h3><i class="fa-solid fa-check"></i>推荐食用人群</h3>
-                    <ul>
-                        <li>长期熬夜、工作疲惫、精神不振上班族</li>
-                        <li>脾胃虚弱、食欲差、身形消瘦体虚者</li>
-                        <li>教师主播、常年吸烟，咽喉干燥人群</li>
-                        <li>中老年腰膝酸软、精力衰退人群</li>
-                        <li>产后、术后气血亏虚，温和调理人群</li>
-                        <li>秋冬肺部干燥、频繁干咳人群</li>
-                    </ul>
-                </div>
-                <div class="crowd-right">
-                    <h3><i class="fa-solid fa-xmark"></i>慎用/暂停人群</h3>
-                    <ul>
-                        <li>体内湿气重、舌苔厚腻、易腹胀腹泻少吃</li>
-                        <li>感冒发烧、痰湿痰多期间暂停食用</li>
-                        <li>婴幼儿肠胃娇嫩，不建议食用</li>
-                        <li>痰湿体质不宜长期大量食用</li>
-                    </ul>
-                    <div class="eat-tips">
-                        <h4>完整养生小贴士</h4>
-                        <p>单次食用不超过5片，坚持少量长期滋补效果更佳。</p>
-                        <button class="tip-btn">查看完整储存&搭配指南</button>
+                    <div class="grow-step">
+                        <div class="num">5</div>
+                        <div class="content">
+                            <h4>清晨采摘 · 当天发货</h4>
+                            <p>每天清晨露水未干时采摘，挑拣后当天打包发出，确保新鲜。</p>
+                        </div>
                     </div>
                 </div>
+                <p style="text-align:center;font-size:14px;color:#6b6560;margin-top:16px;">
+                    ⏳ 全程无公害种植，我们比您更在意安全
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 用户真实口碑 -->
-    <section id="review" class="section bg-green scroll-animate">
-        <div class="container">
-            <div class="section-title white-title">
-                <h2>养生用户真实反馈</h2>
-                <div class="line-decor white-line"></div>
-                <p>上万养生爱好者真实体验分享</p>
+        <!-- ==================== 评价轮播 ==================== -->
+        <section class="reviews fade-section">
+            <h2>💬 顾客说</h2>
+            <div class="review-card active" data-index="0">
+                <div class="stars">★★★★★</div>
+                <div class="text">“白土岗的果子真的不一样，水分足又甜，孩子特别爱吃。已经回购三次了！”</div>
+                <div class="author">—— 郑州 · 李女士</div>
             </div>
-            <div class="review-grid">
-                <div class="review-card">
-                    <div class="review-star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>经常加班熬夜，每天嚼两片黄精，疲惫感减轻很多，泡水软糯无硫磺怪味，口感自然甘甜。</p>
-                    <div class="review-user">——互联网上班族 李先生</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                    </div>
-                    <p>常年抽烟嗓子干痒，坚持黄精枸杞泡水，咽喉舒服不少，家里老人煲汤也会放几片调理身体。</p>
-                    <div class="review-user">——中年养生爱好者 王师傅</div>
-                </div>
-                <div class="review-card">
-                    <div class="review-star">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <p>产后气血虚弱，中医推荐温和滋补，黄精炖鸡汤口感香甜，没有苦涩感，调理身体很合适。</p>
-                    <div class="review-user">——产后调理宝妈 张女士</div>
-                </div>
+            <div class="review-card" data-index="1">
+                <div class="stars">★★★★★</div>
+                <div class="text">“自家种的就是实在，价格比超市便宜，味道还好。老板人实在，发货快！”</div>
+                <div class="author">—— 南阳 · 王先生</div>
             </div>
-        </div>
-    </section>
+            <div class="review-card" data-index="2">
+                <div class="stars">★★★★☆</div>
+                <div class="text">“买了两次了，每次都是现摘的，能闻到泥土的清香。支持本地农户！”</div>
+                <div class="author">—— 洛阳 · 刘女士</div>
+            </div>
+            <div class="review-dots" id="reviewDots">
+                <span class="active" data-index="0"></span>
+                <span data-index="1"></span>
+                <span data-index="2"></span>
+            </div>
+        </section>
 
-    <!-- 页脚 -->
-    <footer class="footer scroll-animate">
-        <div class="container footer-wrap">
-            <div class="footer-col">
-                <h4><i class="fa-solid fa-seedling"></i>关于我们</h4>
-                <p>深耕古法药食同源草本科普，坚守原生态原料与传统炮制工艺，传递天然健康养生理念，只做无添加纯草本食材科普展示。</p>
+        <!-- ==================== 倒计时 ==================== -->
+        <section class="countdown-section fade-section">
+            <h3>⏰ 限时尝鲜价 · 倒计时</h3>
+            <div class="timer" id="countdownTimer">
+                <span>00 <span class="label">时</span></span>
+                <span>00 <span class="label">分</span></span>
+                <span>00 <span class="label">秒</span></span>
             </div>
-            <div class="footer-col">
-                <h4>页面快速导航</h4>
-                <ul>
-                    <li><a href="#intro">黄精溯源</a></li>
-                    <li><a href="#effect">四大养生功效</a></li>
-                    <li><a href="#craft">九蒸九晒工艺</a></li>
-                    <li><a href="#match">养生配伍搭配</a></li>
-                    <li><a href="#food">家常养生食谱</a></li>
-                    <li><a href="#review">用户真实口碑</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>养生咨询渠道</h4>
-                <p><i class="fa-solid fa-phone"></i>养生咨询热线：400-888-9999</p>
-                <p><i class="fa-solid fa-envelope"></i>service@huangjing-yangsheng.com</p>
-                <p><i class="fa-solid fa-location-dot"></i>深山黄精原生种植基地</p>
-            </div>
-        </div>
-        <div class="copyright">
-            © 2026 古法黄精养生馆 版权所有 | 纯药食同源科普展示页面
-        </div>
-    </footer>
+        </section>
 
-    <!-- 返回顶部悬浮按钮 -->
-    <div class="back-top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </div>
-
-    <!-- 养生贴士弹窗 -->
-    <div class="tip-modal">
-        <div class="modal-box">
-            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
-            <h3>黄精完整养生储存&食用指南</h3>
-            <div class="modal-text">
-                <p>1、最佳食用时段：上午9-11点脾胃活跃期吸收效果最好</p>
-                <p>2、储存方式：密封放置阴凉干燥处，防潮避光，不可冷藏</p>
-                <p>3、搭配禁忌：不宜与大量生冷、寒凉食材同食，易损伤脾胃</p>
-                <p>4、调理周期：连续食用30天为一轮温和调理周期</p>
-                <p>5、特殊人群：孕妇、慢性病患者、儿童食用前建议咨询专业中医师</p>
-                <p>6、变质辨别：出现黏手、霉点、酸味请勿继续食用</p>
+        <!-- ==================== 联系 ==================== -->
+        <section class="contact fade-section" id="contact">
+            <h3>📬 联系我</h3>
+            <div class="row">
+                <span class="label">📞 电话</span>
+                <span class="value">123456</span>
             </div>
+            <div class="row">
+                <span class="label">💬 微信</span>
+                <span class="value">123456</span>
+            </div>
+            <div class="row" style="border-bottom:none; padding-bottom:4px;">
+                <span class="label">📍 产地</span>
+                <span class="value">白土岗镇 · 自家田</span>
+            </div>
+            <div class="btn-group">
+                <a href="tel:123456" class="btn-phone">📞 拨打电话</a>
+                <a href="#" class="btn-wechat" id="copyWechatBtn">💬 复制微信</a>
+            </div>
+            <p style="text-align:center;font-size:13px;color:#999;margin-top:14px;">
+                加微信时请备注“白土岗”，优先通过～
+            </p>
+        </section>
+
+        <p style="text-align:center;font-size:13px;color:#b5b0a8;padding:20px 0 10px;">
+            © 白土岗 · 自家种植
+        </p>
+
+    </main>
+
+    <!-- ==================== 底部悬浮栏 ==================== -->
+    <div class="bottom-bar">
+        <div class="price">
+            ¥26.8 <small>/斤</small>
+        </div>
+        <div class="actions">
+            <a href="tel:123456" class="btn-chat">📞 电话</a>
+            <a href="#" class="btn-buy" id="bottomBuyBtn">💬 微信咨询</a>
         </div>
     </div>
 
-    <script src="/zs/script.js"></script>
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        (function() {
+            "use strict";
+
+            // ---------- 1. 滚动渐显 ----------
+            const fadeSections = document.querySelectorAll('.fade-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            fadeSections.forEach(el => observer.observe(el));
+
+            // ---------- 2. 评价轮播 ----------
+            const cards = document.querySelectorAll('.review-card');
+            const dots = document.querySelectorAll('#reviewDots span');
+            let currentReview = 0;
+
+            function showReview(index) {
+                cards.forEach((c, i) => {
+                    c.classList.toggle('active', i === index);
+                });
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+                currentReview = index;
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const idx = parseInt(this.getAttribute('data-index'), 10);
+                    showReview(idx);
+                });
+            });
+
+            let reviewInterval = setInterval(() => {
+                const next = (currentReview + 1) % cards.length;
+                showReview(next);
+            }, 5000);
+
+            const reviewContainer = document.querySelector('.reviews');
+            reviewContainer.addEventListener('touchstart', () => {
+                clearInterval(reviewInterval);
+            });
+            reviewContainer.addEventListener('touchend', () => {
+                reviewInterval = setInterval(() => {
+                    const next = (currentReview + 1) % cards.length;
+                    showReview(next);
+                }, 5000);
+            });
+
+            // ---------- 3. 倒计时 ----------
+            function updateCountdown() {
+                const now = new Date();
+                let target = new Date(now);
+                target.setHours(22, 0, 0, 0);
+                if (now > target) {
+                    target.setDate(target.getDate() + 1);
+                }
+                const diffMs = target - now;
+                if (diffMs <= 0) {
+                    document.getElementById('countdownTimer').innerHTML =
+                        '<span>00 <span class="label">时</span></span><span>00 <span class="label">分</span></span><span>00 <span class="label">秒</span></span>';
+                    return;
+                }
+                const hours = Math.floor(diffMs / (1000 * 60 * 60));
+                const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+                document.getElementById('countdownTimer').innerHTML =
+                    `<span>${String(hours).padStart(2, '0')} <span class="label">时</span></span>` +
+                    `<span>${String(minutes).padStart(2, '0')} <span class="label">分</span></span>` +
+                    `<span>${String(seconds).padStart(2, '0')} <span class="label">秒</span></span>`;
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // ---------- 4. 复制微信 ----------
+            function copyWechat() {
+                const wechat = '123456';
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(wechat).then(() => {
+                        alert('✅ 微信号已复制：' + wechat + '\n快去微信添加吧！');
+                    }).catch(() => {
+                        fallbackCopy(wechat);
+                    });
+                } else {
+                    fallbackCopy(wechat);
+                }
+            }
+
+            function fallbackCopy(text) {
+                const input = document.createElement('input');
+                input.value = text;
+                input.style.position = 'fixed';
+                input.style.opacity = '0';
+                document.body.appendChild(input);
+                input.select();
+                try {
+                    document.execCommand('copy');
+                    alert('✅ 微信号已复制：' + text + '\n快去微信添加吧！');
+                } catch (err) {
+                    alert('请手动复制微信号：' + text);
+                }
+                document.body.removeChild(input);
+            }
+
+            document.getElementById('copyWechatBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                copyWechat();
+            });
+
+            document.getElementById('bottomBuyBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                copyWechat();
+            });
+
+            // ---------- 5. Hero按钮滚动到联系 ----------
+            document.querySelector('.hero .cta-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+
+        })();
+    </script>
+
 </body>
 </html>
