@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九蒸九晒黄精 - 药食同源养生佳品</title>
-    <!-- 引入本地样式 -->
+    <title>九蒸九晒黄精 | 千年药食同源养生科普</title>
     <link rel="stylesheet" href="zs/style.css">
-    <!-- 图标CDN保留，如需完全离线可下载字体本地引入 -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 全局加载动画 -->
+    <div class="loading-box">
+        <div class="load-leaf"><i class="fa-solid fa-seedling"></i></div>
+        <p>正在加载古法黄精养生馆...</p>
+    </div>
+
+    <!-- 顶部公告条 -->
+    <div class="top-notice">
+        <div class="container notice-wrap">
+            <i class="fa-solid fa-leaf"></i>温馨提示：黄精性平滋补，坚持少量长期食用效果更佳
+        </div>
+    </div>
+
     <!-- 导航栏 -->
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fa-solid fa-leaf"></i> 古法九制黄精
+                <i class="fa-solid fa-seedling"></i> 古法九制黄精
             </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="#intro" class="nav-link">黄精介绍</a></li>
-                <li class="nav-item"><a href="#effect" class="nav-link">功效作用</a></li>
-                <li class="nav-item"><a href="#craft" class="nav-link">制作工艺</a></li>
-                <li class="nav-item"><a href="#crowd" class="nav-link">适宜人群</a></li>
-                <li class="nav-item"><a href="#buy" class="nav-link buy-btn">立即选购</a></li>
+                <li class="nav-item"><a href="#intro" class="nav-link">黄精溯源</a></li>
+                <li class="nav-item"><a href="#effect" class="nav-link">四大养生功效</a></li>
+                <li class="nav-item"><a href="#craft" class="nav-link">九蒸九晒工艺</a></li>
+                <li class="nav-item"><a href="#match" class="nav-link">配伍搭配</a></li>
+                <li class="nav-item"><a href="#food" class="nav-link">养生食谱</a></li>
+                <li class="nav-item"><a href="#crowd" class="nav-link">食用人群指南</a></li>
+                <li class="nav-item"><a href="#review" class="nav-link">用户真实口碑</a></li>
             </ul>
-            <!-- 移动端菜单按钮 -->
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -33,216 +45,353 @@
         </div>
     </header>
 
-    <!-- 首屏轮播Banner 本地图片 images/banner.jpg -->
-    <section id="home" class="banner">
+    <!-- 首屏Banner -->
+    <section id="home" class="banner scroll-animate">
+        <div class="banner-overlay"></div>
         <div class="banner-content">
-            <h1>九蒸九晒野生黄精</h1>
-            <p class="sub-title">千年药食同源，古法炮制，补气养阴，健脾润肺益肾</p>
+            <span class="banner-tag">药食同源 · 仙家余粮</span>
+            <h1>深山古法九蒸九晒黄精</h1>
+            <p class="sub-title">历经九蒸九曝，去麻润养，补气养阴，四季温和调理身心</p>
             <div class="banner-buttons">
-                <a href="#intro" class="btn primary-btn">了解详情</a>
-                <a href="#buy" class="btn outline-btn">查看产品</a>
+                <a href="#intro" class="btn primary-btn scroll-btn">深入了解黄精</a>
+                <a href="#food" class="btn outline-btn scroll-btn">查看养生吃法</a>
             </div>
         </div>
-        <div class="banner-overlay"></div>
+        <div class="scroll-tip">
+            <i class="fa-solid fa-angle-down"></i>
+        </div>
     </section>
 
-    <!-- 黄精基础介绍 -->
-    <section id="intro" class="section">
+    <!-- 品牌数据统计 -->
+    <section class="data-wrap scroll-animate">
+        <div class="container data-container">
+            <div class="data-item">
+                <div class="data-num" data-num="1200">0</div>
+                <div class="data-text">古法传承年份</div>
+            </div>
+            <div class="data-item">
+                <div class="data-num" data-num="9">0</div>
+                <div class="data-text">完整蒸晒工序</div>
+            </div>
+            <div class="data-item">
+                <div class="data-num" data-num="36800">0</div>
+                <div class="data-text">养生爱好者选用</div>
+            </div>
+            <div class="data-item">
+                <div class="data-num" data-num="100">0</div>
+                <div class="data-text">无硫无添加占比%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 黄精溯源介绍 -->
+    <section id="intro" class="section scroll-animate">
         <div class="container">
             <div class="section-title">
-                <h2>什么是黄精</h2>
-                <p>自古仙家养生上品，《本草纲目》记载滋补药材</p>
+                <h2>黄精溯源 · 千年仙人余粮</h2>
+                <div class="line-decor"></div>
+                <p>《本草纲目》《神农本草经》记载传统滋补上品</p>
             </div>
             <div class="intro-wrap">
                 <div class="intro-img">
-                    <!-- 本地黄精配图 images/huangjing1.jpg -->
                     <div class="img-box"></div>
+                    <div class="img-label">深山原生三年生黄精根茎</div>
                 </div>
                 <div class="intro-text">
-                    <h3>黄精，仙人余粮</h3>
-                    <p>黄精为百合科植物滇黄精、黄精或多花黄精的干燥根茎，古时又称“仙人饭”。</p>
-                    <p>生黄精带有麻味，刺激咽喉，必须经过蒸晒炮制方可食用。九蒸九晒是传统顶级炮制工艺，反复蒸制后去除刺激性，药性温和，滋补效果大幅提升。</p>
-                    <p>本品选用深山原生态黄精，无硫熏、无添加、人工采摘，遵循古法九蒸九晒，软糯甘甜，可直接嚼食、泡水、煲汤。</p>
+                    <h3>何为九制黄精？</h3>
+                    <p>黄精为百合科多花黄精干燥根茎，古代修道之人常采挖充饥滋养，得名“仙人饭”。生黄精含有刺激性物质，直接食用会咽喉发麻，不可生食。</p>
+                    <p>传统九蒸九晒是顶级炮制工艺，柴火木甑蒸透、日光自然晾晒循环九次，彻底去除麻涩，药性由微凉转为平和，黄精多糖大量析出，软糯甘甜，滋养功效翻倍。</p>
+                    <p>选材全部取自海拔800米以上深山，人工采挖山泉清洗，全程不熏硫磺、无蔗糖、无防腐剂，最大保留草本原生营养。</p>
                     <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> 深山原生选材</li>
-                        <li><i class="fa-solid fa-check"></i> 九蒸九晒古法工艺</li>
-                        <li><i class="fa-solid fa-check"></i> 零硫磺零防腐剂</li>
-                        <li><i class="fa-solid fa-check"></i> 软糯即食，老少皆宜</li>
+                        <li><i class="fa-solid fa-leaf"></i>深山原生自然生长</li>
+                        <li><i class="fa-solid fa-fire-flame-curved"></i>木甑古法九蒸九晒</li>
+                        <li><i class="fa-solid fa-shield-halved"></i>零硫磺零化学添加</li>
+                        <li><i class="fa-solid fa-mug-hot"></i>即食、泡水、煲汤皆宜</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 功效作用板块 -->
-    <section id="effect" class="section bg-green">
+    <!-- 四大养生功效 -->
+    <section id="effect" class="section bg-green scroll-animate">
         <div class="container">
             <div class="section-title white-title">
-                <h2>黄精核心功效</h2>
-                <p>药食同源，温和滋补，四季养生好物</p>
+                <h2>黄精四大核心养生功效</h2>
+                <div class="line-decor white-line"></div>
+                <p>药性平和不燥烈，男女老少四季均可温和滋补</p>
             </div>
             <div class="effect-grid">
                 <div class="effect-card">
                     <div class="card-icon">
                         <i class="fa-solid fa-lungs"></i>
                     </div>
-                    <h4>润肺止咳</h4>
-                    <p>改善肺虚燥咳，咽喉干痒，长期抽烟、用嗓人群适用</p>
+                    <h4>润肺生津</h4>
+                    <p>改善长期吸烟、教师主播用嗓过多、秋冬干燥干咳、咽喉干痒不适</p>
                 </div>
                 <div class="effect-card">
                     <div class="card-icon">
                         <i class="fa-solid fa-stomach"></i>
                     </div>
                     <h4>健脾养胃</h4>
-                    <p>改善脾胃虚弱、食欲不振、体虚乏力、饭后腹胀</p>
+                    <p>调理脾胃虚弱、食欲不振、饭后腹胀、身形消瘦、消化差</p>
                 </div>
                 <div class="effect-card">
                     <div class="card-icon">
                         <i class="fa-solid fa-bolt-lightning"></i>
                     </div>
                     <h4>补气养阴</h4>
-                    <p>缓解气血不足、精神萎靡、熬夜体虚、四肢乏力</p>
+                    <p>缓解长期熬夜、气血亏虚、精神萎靡、四肢乏力、容易疲惫</p>
                 </div>
                 <div class="effect-card">
                     <div class="card-icon">
                         <i class="fa-solid fa-seedling"></i>
                     </div>
                     <h4>益肾固本</h4>
-                    <p>滋养肾精，改善腰膝酸软、失眠多梦、体虚早衰</p>
+                    <p>滋养肾精，改善中老年腰膝酸软、失眠多梦、体虚早衰</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 古法制作工艺 -->
-    <section id="craft" class="section">
+    <!-- 九蒸九晒完整工艺 -->
+    <section id="craft" class="section scroll-animate">
         <div class="container">
             <div class="section-title">
-                <h2>九蒸九晒传统工艺</h2>
-                <p>九次蒸制、九次晾晒，耗时月余，匠心炮制</p>
+                <h2>古法九蒸九晒完整工序</h2>
+                <div class="line-decor"></div>
+                <p>纯手工操作，全程三十余天慢制而成</p>
             </div>
             <div class="craft-step">
                 <div class="step-item">
                     <span class="step-num">01</span>
                     <h5>深山采挖</h5>
-                    <p>秋冬采挖三年以上成熟黄精根茎</p>
+                    <p>秋冬采收三年以上成熟黄精根茎</p>
                 </div>
                 <div class="step-item">
                     <span class="step-num">02</span>
-                    <h5>清洗去泥</h5>
-                    <p>山泉清水反复冲洗，去除杂质</p>
+                    <h5>山泉清洗</h5>
+                    <p>反复冲刷泥土杂质，自然沥干水分</p>
                 </div>
                 <div class="step-item">
                     <span class="step-num">03</span>
-                    <h5>第一次蒸晒</h5>
-                    <p>木甑隔水蒸透，露天自然晾晒至干</p>
+                    <h5>首次木蒸</h5>
+                    <p>柴火木甑隔水蒸至根茎通透柔软</p>
                 </div>
                 <div class="step-item">
                     <span class="step-num">04</span>
-                    <h5>循环九次</h5>
-                    <p>重复蒸、晒工序九遍，色泽转为油润乌黑</p>
+                    <h5>露天日晒</h5>
+                    <p>日光自然风干，吸纳天地阳气</p>
                 </div>
                 <div class="step-item">
                     <span class="step-num">05</span>
-                    <h5>成品筛选</h5>
-                    <p>人工分拣，剔除残次品，真空封装锁鲜</p>
+                    <h5>九次循环</h5>
+                    <p>重复蒸、晒九遍，直至乌黑油润软糯</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">06</span>
+                    <h5>人工筛选封装</h5>
+                    <p>剔除残次品，真空锁鲜保存营养</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 适宜人群 -->
-    <section id="crowd" class="section bg-light">
+    <!-- 新增：黄精经典配伍搭配 -->
+    <section id="match" class="section bg-light scroll-animate">
         <div class="container">
             <div class="section-title">
-                <h2>适合哪些人食用</h2>
+                <h2>黄精经典养生配伍</h2>
+                <div class="line-decor"></div>
+                <p>搭配不同食材，针对性调理身体</p>
+            </div>
+            <div class="match-grid">
+                <div class="match-card">
+                    <h4>黄精+枸杞</h4>
+                    <p>补气明目，改善熬夜眼干、精神疲惫，上班族日常泡水首选</p>
+                </div>
+                <div class="match-card">
+                    <h4>黄精+红枣山药</h4>
+                    <p>健脾补血，体虚消瘦、气血不足人群煲汤搭配</p>
+                </div>
+                <div class="match-card">
+                    <h4>黄精+麦冬玉竹</h4>
+                    <p>强力润肺，常年干咳、抽烟人群秋冬调理</p>
+                </div>
+                <div class="match-card">
+                    <h4>黄精+桂圆</h4>
+                    <p>安神固本，改善失眠多梦、体虚乏力中老年适用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 四种养生食谱 -->
+    <section id="food" class="section scroll-animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>四种家常黄精养生食谱</h2>
+                <div class="line-decor"></div>
+                <p>做法简单，居家轻松养生</p>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                    <h4>黄精枸杞代茶饮</h4>
+                    <p>黄精2片+枸杞少许，沸水冲泡反复续水，熬夜人群每日饮用。</p>
+                </div>
+                <div class="food-card">
+                    <div class="food-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+                    <h4>黄精老母鸡汤</h4>
+                    <p>鸡肉、黄精、红枣、山药慢炖1.5h，产后术后体虚滋补。</p>
+                </div>
+                <div class="food-card">
+                    <div class="food-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                    <h4>直接嚼食</h4>
+                    <p>每日2-3片即食黄精，软糯香甜，办公室随时补充精力。</p>
+                </div>
+                <div class="food-card">
+                    <div class="food-icon"><i class="fa-solid fa-wine-bottle"></i></div>
+                    <h4>黄精养生泡酒</h4>
+                    <p>搭配枸杞桂圆纯粮酒浸泡，中老年固本滋养（少量饮用）。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 食用人群区分指南 -->
+    <section id="crowd" class="section bg-light scroll-animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>食用人群区分指南</h2>
+                <div class="line-decor"></div>
             </div>
             <div class="crowd-wrap">
                 <div class="crowd-left">
-                    <h3>推荐食用人群</h3>
+                    <h3><i class="fa-solid fa-check"></i>推荐食用人群</h3>
                     <ul>
-                        <li>经常熬夜、作息不规律、容易疲惫人群</li>
-                        <li>脾胃差、胃口不好、消瘦体虚人群</li>
-                        <li>经常抽烟、咽喉干燥、干咳人群</li>
-                        <li>中老年腰膝酸软、精力不足</li>
-                        <li>上班族、体力消耗大、气血亏虚者</li>
-                        <li>产后、术后体虚需要温和滋补人群</li>
+                        <li>长期熬夜、工作疲惫、精神不振上班族</li>
+                        <li>脾胃虚弱、食欲差、身形消瘦体虚者</li>
+                        <li>教师主播、常年吸烟，咽喉干燥人群</li>
+                        <li>中老年腰膝酸软、精力衰退人群</li>
+                        <li>产后、术后气血亏虚，温和调理人群</li>
+                        <li>秋冬肺部干燥、频繁干咳人群</li>
                     </ul>
                 </div>
                 <div class="crowd-right">
-                    <h3>慎用人群</h3>
+                    <h3><i class="fa-solid fa-xmark"></i>慎用/暂停人群</h3>
                     <ul>
-                        <li>湿气重、舌苔厚腻、容易腹胀腹泻者少吃</li>
-                        <li>感冒发烧、痰湿咳嗽期间暂停食用</li>
-                        <li>婴幼儿不建议食用</li>
+                        <li>体内湿气重、舌苔厚腻、易腹胀腹泻少吃</li>
+                        <li>感冒发烧、痰湿痰多期间暂停食用</li>
+                        <li>婴幼儿肠胃娇嫩，不建议食用</li>
+                        <li>痰湿体质不宜长期大量食用</li>
                     </ul>
                     <div class="eat-tips">
-                        <h4>简单食用方法</h4>
-                        <p>1. 直接嚼服，每日2-3片</p>
-                        <p>2. 开水冲泡代茶饮，可反复续水</p>
-                        <p>3. 煲汤搭配枸杞、红枣、鸡肉滋补</p>
+                        <h4>完整养生小贴士</h4>
+                        <p>单次食用不超过5片，坚持少量长期滋补效果更佳。</p>
+                        <button class="tip-btn">查看完整储存&搭配指南</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 产品购买板块 本地产品图 images/product.jpg -->
-    <section id="buy" class="section bg-green">
+    <!-- 用户真实口碑 -->
+    <section id="review" class="section bg-green scroll-animate">
         <div class="container">
             <div class="section-title white-title">
-                <h2>正品九蒸九晒黄精</h2>
-                <p>真空独立包装，干净便携，送礼自用两相宜</p>
+                <h2>养生用户真实反馈</h2>
+                <div class="line-decor white-line"></div>
+                <p>上万养生爱好者真实体验分享</p>
             </div>
-            <div class="product-card">
-                <div class="product-img-box"></div>
-                <div class="product-info">
-                    <h3>古法九制即食黄精 250g罐装</h3>
-                    <div class="price">
-                        <span class="old-price">原价：89元</span>
-                        <span class="now-price">现价：59元</span>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="desc">独立真空小袋包装，开袋即食，无蔗糖添加，天然甘甜，日常养生常备。</p>
-                    <div class="product-buttons">
-                        <button class="cart-btn">加入购物车</button>
-                        <button class="buy-now-btn">立即下单</button>
+                    <p>经常加班熬夜，每天嚼两片黄精，疲惫感减轻很多，泡水软糯无硫磺怪味，口感自然甘甜。</p>
+                    <div class="review-user">——互联网上班族 李先生</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <div class="service-tip">
-                        <span><i class="fa-solid fa-truck-fast"></i> 全国包邮</span>
-                        <span><i class="fa-solid fa-shield-halved"></i> 品质保障</span>
-                        <span><i class="fa-solid fa-rotate-left"></i> 不满意可退换</span>
+                    <p>常年抽烟嗓子干痒，坚持黄精枸杞泡水，咽喉舒服不少，家里老人煲汤也会放几片调理身体。</p>
+                    <div class="review-user">——中年养生爱好者 王师傅</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
                     </div>
+                    <p>产后气血虚弱，中医推荐温和滋补，黄精炖鸡汤口感香甜，没有苦涩感，调理身体很合适。</p>
+                    <div class="review-user">——产后调理宝妈 张女士</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
+    <footer class="footer scroll-animate">
         <div class="container footer-wrap">
             <div class="footer-col">
-                <h4>关于我们</h4>
-                <p>专注古法药食同源滋补品，坚持原生态原料，传统工艺炮制，做天然健康养生食材。</p>
+                <h4><i class="fa-solid fa-seedling"></i>关于我们</h4>
+                <p>深耕古法药食同源草本科普，坚守原生态原料与传统炮制工艺，传递天然健康养生理念，只做无添加纯草本食材科普展示。</p>
             </div>
             <div class="footer-col">
-                <h4>快速导航</h4>
+                <h4>页面快速导航</h4>
                 <ul>
-                    <li><a href="#intro">黄精介绍</a></li>
-                    <li><a href="#effect">功效作用</a></li>
-                    <li><a href="#craft">制作工艺</a></li>
-                    <li><a href="#buy">产品购买</a></li>
+                    <li><a href="#intro">黄精溯源</a></li>
+                    <li><a href="#effect">四大养生功效</a></li>
+                    <li><a href="#craft">九蒸九晒工艺</a></li>
+                    <li><a href="#match">养生配伍搭配</a></li>
+                    <li><a href="#food">家常养生食谱</a></li>
+                    <li><a href="#review">用户真实口碑</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>联系客服</h4>
-                <p><i class="fa-solid fa-phone"></i> 养生热线：400-888-9999</p>
-                <p><i class="fa-solid fa-envelope"></i> service@huangjing.com</p>
+                <h4>养生咨询渠道</h4>
+                <p><i class="fa-solid fa-phone"></i>养生咨询热线：400-888-9999</p>
+                <p><i class="fa-solid fa-envelope"></i>service@huangjing-yangsheng.com</p>
+                <p><i class="fa-solid fa-location-dot"></i>深山黄精原生种植基地</p>
             </div>
         </div>
         <div class="copyright">
-            © 2026 古法黄精养生馆 版权所有
+            © 2026 古法黄精养生馆 版权所有 | 纯药食同源科普展示页面
         </div>
     </footer>
+
+    <!-- 返回顶部悬浮按钮 -->
+    <div class="back-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- 养生贴士弹窗 -->
+    <div class="tip-modal">
+        <div class="modal-box">
+            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
+            <h3>黄精完整养生储存&食用指南</h3>
+            <div class="modal-text">
+                <p>1、最佳食用时段：上午9-11点脾胃活跃期吸收效果最好</p>
+                <p>2、储存方式：密封放置阴凉干燥处，防潮避光，不可冷藏</p>
+                <p>3、搭配禁忌：不宜与大量生冷、寒凉食材同食，易损伤脾胃</p>
+                <p>4、调理周期：连续食用30天为一轮温和调理周期</p>
+                <p>5、特殊人群：孕妇、慢性病患者、儿童食用前建议咨询专业中医师</p>
+                <p>6、变质辨别：出现黏手、霉点、酸味请勿继续食用</p>
+            </div>
+        </div>
+    </div>
 
     <script src="zs/script.js"></script>
 </body>
